@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abu Rizk Butchery | جزارة أبو رزق</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --primary-red: #a80d1e;
+            --dark-red: #700510;
+            --accent-gold: #d4af37;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-light: #f5f5f5;
+            --text-muted: #aaa;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        header p.subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .contact-banner {
+            background: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .contact-banner a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .contact-banner a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- Main Content --- */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--accent-gold);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- Menu Grid --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .featured-item {
+            display: block;
+            padding: 14px;
+            border-color: rgba(212, 175, 55, 0.55);
+        }
+
+        .featured-item .item-photo {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            object-position: center 55%;
+            border-radius: 9px;
+            margin-bottom: 14px;
+        }
+
+        .featured-item .item-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .featured-item .item-price {
+            white-space: nowrap;
+        }
+
+        .item-info h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .item-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .item-price {
+            text-align: left;
+        }
+
+        .price-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+        }
+
+        .price-unit {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- QR Section --- */
+        .qr-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #333;
+            max-width: 500px;
+            margin: 0 auto 50px;
+        }
+
+        .qr-section h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        #qrcode {
+            background: #fff;
+            padding: 15px;
+            display: inline-block;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: linear-gradient(135deg, var(--dark-red), #000);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 25px 20px;
+            border-top: 2px solid var(--primary-red);
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .developer-tag {
+            color: var(--accent-gold);
+            font-weight: bold;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* --- Floating Order Button --- */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebc57;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <i class="fa-solid font-awesome fa-drumstick-bite logo-icon"></i>
+            <h1>Abu Rizk Butchery | جزارة أبو رزق</h1>
+            <p class="subtitle">100% Fresh Local Veal Meat - Quality You Can Trust</p>
+            <p class="subtitle" style="font-size: 0.95rem; color: #ffcccc;">لحوم عجول بلدي طازجة 100% - جودة تضمنها بثقة</p>
+            
+            <div class="contact-banner">
+                <i class="fa-solid fa-phone" style="color: var(--accent-gold); margin-left: 5px;"></i>
+                <span style="font-weight: bold;">Contact Us For Orders:</span>
+                <a href="tel:01007188130">01007188130</a> | 
+                <a href="tel:01008333945">01008333945</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Menu Section -->
+        <h2 class="section-title">قائمة الأسعار اليومية</h2>
+        
+        <div class="menu-grid">
+            <!-- Item 1 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat22.jpeg" alt="لحم بلدي كبيس طازج">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو اللحمة</h3>
+                        <p>لحم بلدي كبيس طازج ممتاز</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">470</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat18.jpeg" alt="كبدة بلدي طازجة">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو الكبدة</h3>
+                        <p>كبدة بلدي طازجة يومياً</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">480</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat19.jpeg" alt="قطع لحم بيت الكلوة طازجة">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو بيت الكلوة</h3>
+                        <p>قطعيات ناعمة ومثالية للشوي</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">480</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="menu-card">
+                <div class="item-info">
+                    <h3>كيلو اللزقة</h3>
+                    <p>لحم ناعم وسريع الطهي</p>
+                </div>
+                <div class="item-price">
+                    <span class="price-number">480</span>
+                    <span class="price-unit">ج.م / كجم</span>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat17.jpeg" alt="لحم عرق فليتو طازج">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو عرق فليتو</h3>
+                        <p>أطرق وأطرى قطعة لحم للشوي والروستو</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">480</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat10.jpeg" alt="شرائح استيك طازجة">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو استيك</h3>
+                        <p>شرائح استيك ممتازة</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">480</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat14.jpeg" alt="شرائح شاورما لحم طازجة">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو شاورما</h3>
+                        <p>شرائح شاورما بلدي متبلة أو جاهزة</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">500</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="menu-card">
+                <div class="item-info">
+                    <h3>كيلو برجر</h3>
+                    <p>برجر لحم بلدي صافي 100%</p>
+                </div>
+                <div class="item-price">
+                    <span class="price-number">500</span>
+                    <span class="price-unit">ج.م / كجم</span>
+                </div>
+            </div>
+
+            <!-- Item 9 -->
+            <div class="menu-card">
+                <div class="item-info">
+                    <h3>كيلو سجق</h3>
+                    <p>سجق بلدي بالبهارات الخاصة</p>
+                </div>
+                <div class="item-price">
+                    <span class="price-number">500</span>
+                    <span class="price-unit">ج.م / كجم</span>
+                </div>
+            </div>
+
+            <!-- Item 10 -->
+            <div class="menu-card">
+                <div class="item-info">
+                    <h3>كيلو عرق تربيانكو</h3>
+                    <p>مثالي للحمة الباردة والروستو</p>
+                </div>
+                <div class="item-price">
+                    <span class="price-number">500</span>
+                    <span class="price-unit">ج.م / كجم</span>
+                </div>
+            </div>
+
+            <!-- Item 11 -->
+            <div class="menu-card featured-item">
+                <img class="item-photo" src="meat13.jpeg" alt="شرائح بفتيك طازجة">
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>كيلو بفتيك</h3>
+                        <p>شرائح بفتيك ناعمة جاهزة للتحمير</p>
+                    </div>
+                    <div class="item-price">
+                        <span class="price-number">550</span>
+                        <span class="price-unit">ج.م / كجم</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QR Code Generator Section -->
+        <div class="qr-section">
+            <h3>رمز الـ QR الخاص بالمنيو</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">امسح الرمز بالموبايل لفتح المنيو أو مشاركته مع زبائنك:</p>
+            <div id="qrcode"></div>
+            <p style="font-size: 0.85rem; color: var(--accent-gold);">Abu Rizk Butchery Digital Menu</p>
+        </div>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>All Rights Reserved © 2026 - <strong>Abu Rizk Butchery</strong></p>
+        <p>Designed & Developed by <span class="developer-tag">eng / Elsayed Rizk</span></p>
+    </footer>
+
+    <!-- WhatsApp Quick Order -->
+    <a href="https://wa.me/201007188130?text=السلام%20عليكم،%20حابب%20أطلب%20من%20جزارة%20أبو%20رزق" class="btn-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+        <span>اطلب واتساب</span>
+    </a>
+
+    <!-- Script to generate QR Code dynamically -->
+    <script>
+        // Generate QR code for the current window location
+        window.onload = function() {
+            new QRCode(document.getElementById("qrcode"), {
+                text: window.location.href || "https://aburizk-butchery.com",
+                width: 160,
+                height: 160,
+                colorDark : "#700510",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        };
+    </script>
+</body>
+</html>
